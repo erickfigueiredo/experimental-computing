@@ -9,16 +9,16 @@
 
 using namespace std;
 
-void simulate(long long n, long long wins[]){
+void simulate(long long n, int den, int prob[], long long wins[]) {
   bool died;
 
-  while(n--) {
-    while(true){
+  for (int i = 0; i < n; i++) {
+    while (true) {
       died = false;
-      for(int i = 0; i < 2; i++){
+      for (int j = 0; j < 2; j++) {
         // incrementa e finaliza
-        if(rand()%2) {
-          wins[i]++;
+        if (rand() % den < prob[j]) {
+          wins[j]++;
           died = true;
           break;
         }
@@ -26,22 +26,33 @@ void simulate(long long n, long long wins[]){
       if (died) break;
     }
   }
-  printf("Simulacao finalizada!\n - Vitorias de A: %lld\n - Vitorias de B: %lld\n", wins[0], wins[1]);
+  printf("Simulacao finalizada: %lld de duelos!\n - Vitorias de A: %.3f%%\n - Vitorias de B: %.3f%%\n\n", n, (wins[0] * 100.0) / n, (wins[1] * 100.0) / n);
 }
 
 int main(int argc, char** argv) {
   srand(time(nullptr));
 
-  if(argc == 1){
-    long long wins[] = {0, 0};
+  if (argc == 1) {
+    long long wins[] = { 0, 0 };
     long long nSimulations;
+    int den, prob[2];
+
     cout << "Informe o numero de rodadas que deseja simular: ";
     cin >> nSimulations;
-    simulate(nSimulations, wins);
-  } else {
-    for(int i = 1; i < argc; i++){
-      long long wins[] = {0, 0};
-      simulate(stoll(argv[i]), wins);
+    cout << "Informe a precisao total e a precisao de cada jogador: ";
+    cin >> den >> prob[0] >> prob[1];
+
+    simulate(nSimulations, den, prob, wins);
+  }
+  else {
+    int prob[2];
+    int den = stoi(argv[1]);
+    prob[0] = stoi(argv[2]);
+    prob[1] = stoi(argv[3]);
+
+    for (int i = 4; i < argc; i++) {
+      long long wins[] = { 0, 0 };
+      simulate(stoll(argv[i]), den, prob, wins);
     }
   }
   return 0;
