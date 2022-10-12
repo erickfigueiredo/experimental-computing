@@ -32,10 +32,11 @@ void simulate(long long n, int den, int prob[], long long wins[]) {
 int main(int argc, char** argv) {
   srand(time(nullptr));
 
+  int den, prob[2];
+
   if (argc == 1) {
     long long wins[] = { 0, 0 };
     long long nSimulations;
-    int den, prob[2];
 
     cout << "Informe o numero de rodadas que deseja simular: ";
     cin >> nSimulations;
@@ -45,8 +46,7 @@ int main(int argc, char** argv) {
     simulate(nSimulations, den, prob, wins);
   }
   else {
-    int prob[2];
-    int den = stoi(argv[1]);
+    den = stoi(argv[1]);
     prob[0] = stoi(argv[2]);
     prob[1] = stoi(argv[3]);
 

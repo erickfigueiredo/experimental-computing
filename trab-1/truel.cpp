@@ -1,3 +1,8 @@
+// Computação Experimental
+// Alunos: Erick Figueiredo e Carlos Sabino
+
+// AVISO: O código permite inserção por linhas de comando ou arquivo
+
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
