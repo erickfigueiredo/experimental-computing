@@ -42,11 +42,11 @@ void simulate1(long long n, int den, int prob[], long long wins[]) {
 
 void simulate2(long long n, int den, int prob[], long long wins[]) {
     int alive = 3;
-    bool deaths[3] = { 0, 0, 0 };
 
     map<long long, int> mostImportant = { {prob[0], 0}, {prob[1], 1}, {prob[2], 2} };
 
     for (int i = 0; i < n; i++) {
+        bool deaths[3] = { 0, 0, 0 };
         while (alive > 1) {
             for (int j = 0; j < 3; j++) {
                 cout << "netrou\n";
@@ -67,7 +67,7 @@ void simulate2(long long n, int den, int prob[], long long wins[]) {
             }
         }
     }
-
+    cout << wins[0]+wins[1]+wins[2] << "\n";
     printf("Simulacao estrategia 2 finalizada: %lld de duelos!\n - Vitorias de A: %.3f%%\n - Vitorias de B: %.3f%%\n - Vitorias de C: %.3f%%\n\n", n, (wins[0] * 100.0) / n, (wins[1] * 100.0) / n, (wins[2] * 100.0) / n);
 }
 
