@@ -52,7 +52,7 @@ void simulate2(long long n, int den, int prob[], long long wins[]) {
                 cout << "netrou\n";
                 if (!deaths[j] && (rand() % den < prob[j])) {
                     wins[j]++;
-                    auto it = mostImportant.end()--;
+                    auto it = --mostImportant.end();
 
                     if (it->second == j)
                         it--;
