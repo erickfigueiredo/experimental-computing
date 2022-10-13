@@ -12,7 +12,7 @@ using namespace std;
 
 void simulate1(long long n, int den, int prob[], long long wins[]) {
     for (int i = 0; i < n; i++) {
-        int deaths[] = { 0, 0, 0 };
+        bool deaths[] = { 0, 0, 0 };
 
         map<long long, int> mostImportant = { {prob[0], 0}, {prob[1], 1}, {prob[2], 2} };
 
