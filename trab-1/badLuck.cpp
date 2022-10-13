@@ -35,7 +35,7 @@ int main(int argc, char** argv) {
 
     if (argc > 1) {
         monA = stoi(argv[1]);
-        monA = stoi(argv[2]);
+        monB = stoi(argv[2]);
 
         for (int i = 3; i < argc; i++)
             simulate(stoll(argv[i]), monA, monB);
