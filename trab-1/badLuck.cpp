@@ -7,13 +7,14 @@ using namespace std;
 
 void simulate(long long n, int mA, int mB) {
     long long wins[] = { 0, 0 };
+    int sempreFrente = 0;
 
     printf("Simulacao finalizada: %lld rodada(s)!\n", n);
 
     for (long long i = 0; i < n; i++) {
         long long flipCoin = 0;
         
-        printf("=> Round %lld:\n", i+1);
+        // printf("=> Round %lld:\n", i+1);
         int moneyA = mA;
         int moneyB = mB;
 
@@ -37,14 +38,37 @@ void simulate(long long n, int mA, int mB) {
         if (!moneyA) wins[1]++;
         else wins[0]++;
 
-        for(const auto &p:moneyPerRound)
+        //contar inversões em cada simulação
+        int idx = mA > mB ? 0 : 1;
+        int inversoes = 0;
+        int vezes_frente[2] = {0,0};
+
+        auto it = ++moneyPerRound.begin();
+        while(it != moneyPerRound.end()){
+            int aux[2] = {it->first,it->second};
+            vezes_frente[idx]++;
+            if(aux[idx] < aux[1-idx]){
+                inversoes++;
+                idx = 1 - idx; // se idx é 0 e teve inv idx = 1
+            }
+            it++;
+        }
+
+
+        for(const auto &p:moneyPerRound){
             printf("%d,%d\n", p.first, p.second);
+        }
 
         printf("-Numero de lancamentos: %lld\n\n", flipCoin);
+        // cout << inversoes <<"\n";
+
+        if(inversoes == 0) sempreFrente++;
+        // cout << vezes_frente[0] << "," << vezes_frente[1] << "\n";
     }
 
     printf("- Vitorias de A: %.3f%%\n- Vitorias de B: %.3f%%\n\n", (wins[0] * 100.0) / n, (wins[1] * 100.0) / n);
-
+    //para usar na ultima pergunta
+    printf("- Porcentagem de ficar sempre na frente: %.3f%%\n\n", (100.0*sempreFrente)/n);
 }
 
 int main(int argc, char** argv) {
