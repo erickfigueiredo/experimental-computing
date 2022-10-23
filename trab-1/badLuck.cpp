@@ -64,6 +64,7 @@ void simulate(long long n, int mA, int mB) {
         // cout << inversoes <<"\n";
 
         if(inversoes == 0) sempreFrente++;
+        //printa no formato de csv
         cout << flipCoin  << "," << vezes_frente[0] << "," << vezes_frente[1] << "," << inversoes << "\n";
     }
 
