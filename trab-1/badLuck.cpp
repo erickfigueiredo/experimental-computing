@@ -10,6 +10,7 @@ void simulate(long long n, int mA, int mB) {
     int sempreFrente = 0;
 
     printf("Simulacao finalizada: %lld rodada(s)!\n", n);
+    cout << "Lançamentos,A_frente,B_frente,Inversoes\n";
 
     for (long long i = 0; i < n; i++) {
         long long flipCoin = 0;
@@ -55,15 +56,15 @@ void simulate(long long n, int mA, int mB) {
         }
 
 
-        for(const auto &p:moneyPerRound){
-            printf("%d,%d\n", p.first, p.second);
-        }
+        // for(const auto &p:moneyPerRound){
+        //     printf("%d,%d\n", p.first, p.second);
+        // }
 
-        printf("-Numero de lancamentos: %lld\n\n", flipCoin);
+        // printf("-Numero de lancamentos: %lld\n\n", flipCoin);
         // cout << inversoes <<"\n";
 
         if(inversoes == 0) sempreFrente++;
-        // cout << vezes_frente[0] << "," << vezes_frente[1] << "\n";
+        cout << flipCoin  << "," << vezes_frente[0] << "," << vezes_frente[1] << "," << inversoes << "\n";
     }
 
     printf("- Vitorias de A: %.3f%%\n- Vitorias de B: %.3f%%\n\n", (wins[0] * 100.0) / n, (wins[1] * 100.0) / n);
