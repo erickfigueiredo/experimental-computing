@@ -8,12 +8,12 @@ using namespace std;
 void simulate(long long n, int mA, int mB) {
     long long wins[] = { 0, 0 };
 
-    printf("Simulacao finalizada: %lld rodada(s)!\n", n);
+    //printf("Simulacao finalizada: %lld rodada(s)!\n", n);
 
     for (long long i = 0; i < n; i++) {
         long long flipCoin = 0;
         
-        printf("=> Round %lld:\n", i+1);
+        //printf("=> Round %lld:\n", i+1);
         int moneyA = mA;
         int moneyB = mB;
 
@@ -40,10 +40,11 @@ void simulate(long long n, int mA, int mB) {
         for(const auto &p:moneyPerRound)
             printf("%d,%d\n", p.first, p.second);
 
-        printf("-Numero de lancamentos: %lld\n\n", flipCoin);
+        //printf("-Numero de lancamentos: %lld\n\n", flipCoin);
+        //printf("%lld,\n", flipCoin);
     }
 
-    printf("- Vitorias de A: %.3f%%\n- Vitorias de B: %.3f%%\n\n", (wins[0] * 100.0) / n, (wins[1] * 100.0) / n);
+    //printf("- Vitorias de A: %.3f%%\n- Vitorias de B: %.3f%%\n\n", (wins[0] * 100.0) / n, (wins[1] * 100.0) / n);
 
 }
 
