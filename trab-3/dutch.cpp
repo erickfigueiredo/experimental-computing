@@ -80,4 +80,7 @@ int main(int argc, char ** argv){
 
     cout << default_sort_time << "\n";
 
+    for(auto i:v) cout << i << " ";
+    cout << "\n";
+
 }
